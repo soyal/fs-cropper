@@ -1,0 +1,55 @@
+{
+  "name": "@fs/fs-cropper",
+  "version": "1.0.0",
+  "description": "fs image cropper",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --progress",
+    "prepublish": "npm run build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "author": "soyal",
+  "license": "ISC",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "halogen": "^0.2.0",
+    "prop-types": "^15.6.0",
+    "react": "^15.6.1",
+    "react-avatar-editor": "^10.3.0",
+    "react-dom": "^15.6.1"
+  },
+  "peerDependencies": {
+    "@fs/cc-ui": "^2.1.7"
+  },
+  "devDependencies": {
+    "@fs/cc-ui": "^2.1.7",
+    "@storybook/addon-actions": "^3.2.6",
+    "@storybook/addon-links": "^3.2.6",
+    "@storybook/react": "^3.2.8",
+    "autoprefixer": "^7.1.4",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.18.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "postcss-flexbugs-fixes": "^3.2.0",
+    "prettier": "^1.9.2",
+    "storybook": "0.0.1",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.5"
+  }
+}
