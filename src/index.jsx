@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import AvatarEditor from 'react-avatar-editor'
-import { Button, Modal } from '@fs/cc-ui'
+import { Button, Modal, Spin } from '@fs/cc-ui'
 import PropTypes from 'prop-types'
 
 import './index.less'
@@ -28,9 +28,27 @@ class FsCropper extends Component {
 
   cropper = null // 裁剪框的dom对象
 
+  state = {
+    loading: false // 是否显示spin
+  }
+
+  showSpin() {
+    this.setState({
+      loading: true
+    })
+  }
+
+  hideSpin() {
+    this.setState({
+      loading: false
+    })
+  }
+
   _onConfirm = async () => {
     const canvas = this.cropper.getImage()
+    this.showSpin()
     await this.props.onConfirm(canvas.toDataURL())
+    this.hideSpin()
   }
 
   render() {
@@ -53,34 +71,40 @@ class FsCropper extends Component {
         }}
         onClose={onClose}
       >
-        <div className="fs-cropper">
-          <div className="fs-cropper_crop">
-            <AvatarEditor
-              ref={dom => (this.cropper = dom)}
-              image={image}
-              width={width}
-              height={height}
-              borderRadius={borderRadius}
-              color={[0, 0, 0, 0.3]} // RGBA
-              rotate={0}
-              border={25}
-            />
-          </div>
+        <Spin show={this.state.loading}>
+          <div className="fs-cropper">
+            <div className="fs-cropper_crop">
+              <AvatarEditor
+                ref={dom => (this.cropper = dom)}
+                image={image}
+                width={width}
+                height={height}
+                borderRadius={borderRadius}
+                color={[0, 0, 0, 0.3]} // RGBA
+                rotate={0}
+                border={25}
+              />
+            </div>
 
-          <div className="fs-cropper_btns">
-            <Button className="fs-cropper_btn" size="medium" onClick={onClose}>
-              取消
-            </Button>
-            <Button
-              type="primary"
-              size="medium"
-              className="fs-cropper_btn"
-              onClick={this._onConfirm}
-            >
-              确认
-            </Button>
+            <div className="fs-cropper_btns">
+              <Button
+                className="fs-cropper_btn"
+                size="medium"
+                onClick={onClose}
+              >
+                取消
+              </Button>
+              <Button
+                type="primary"
+                size="medium"
+                className="fs-cropper_btn"
+                onClick={this._onConfirm}
+              >
+                确认
+              </Button>
+            </div>
           </div>
-        </div>
+        </Spin>
       </Modal>
     )
   }

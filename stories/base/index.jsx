@@ -38,11 +38,13 @@ class Demo extends Component {
           }}
           onConfirm={base64 => {
             return new Promise(resolve => {
-              this.setState({
-                previewUrl: base64,
-                show: false
-              })
-              resolve()
+              setTimeout(() => {
+                this.setState({
+                  previewUrl: base64,
+                  show: false
+                })
+                resolve()
+              }, 2000)
             })
           }}
         />

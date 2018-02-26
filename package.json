@@ -21,10 +21,11 @@
     "react-dom": "^15.6.1"
   },
   "peerDependencies": {
-    "@fs/cc-ui": "^2.1.7"
+    "@fs/cc-ui": "^2.2.0"
   },
   "devDependencies": {
-    "@fs/cc-ui": "^2.1.7",
+    "@fs/babel-plugin-import": "^1.0.0",
+    "@fs/cc-ui": "^2.2.0",
     "@storybook/addon-actions": "^3.2.6",
     "@storybook/addon-links": "^3.2.6",
     "@storybook/react": "^3.2.8",
