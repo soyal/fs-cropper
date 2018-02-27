@@ -62,13 +62,23 @@ module.exports = {
 
 function _externals() {
   const exs = {}
+  const result = [exs]
   config.externals.forEach(ex => {
-    exs[ex] = {
-      commonjs: ex,
-      commonjs2: ex,
-      amd: ex
+    if (typeof ex === 'object') {
+      result.push((context, request, cb) => {
+        const pattern = ex.regexp
+        if (pattern.test(request)) {
+          return cb(null, ex.module + ' ' + request)
+        }
+        cb()
+      })
+    } else {
+      exs[ex] = {
+        commonjs: ex,
+        commonjs2: ex
+      }
     }
   })
 
-  return exs
+  return result
 }
