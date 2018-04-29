@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Cropper from '../../src/index'
 
+import './index.less'
+
 class Demo extends Component {
   state = {
     show: false,
@@ -12,7 +14,7 @@ class Demo extends Component {
     const { show, previewUrl } = this.state
 
     return (
-      <div>
+      <div className="base-container">
         <input
           type="file"
           onChange={e => {

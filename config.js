@@ -7,6 +7,6 @@ module.exports = {
       module: 'commonjs'
     },
     'prop-types',
-    'react-avatar-editor'
+    'cropperjs'
   ]
 }

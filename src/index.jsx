@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
-import AvatarEditor from 'react-avatar-editor'
 import { Button, Modal, Spin } from '@fs/cc-ui'
+import ImageCropper from './cropper'
 import PropTypes from 'prop-types'
-
+import 'cropperjs/dist/cropper.css'
 import './index.less'
 
 class FsCropper extends Component {
   static propTypes = {
-    image: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    width: PropTypes.number, // 裁剪区域宽度
-    height: PropTypes.number, // 裁剪区域高度
-    borderRadius: PropTypes.number, // border radius
+    image: PropTypes.oneOfType([PropTypes.string, PropTypes.object]), // 显示的图片url
     title: PropTypes.string,
     show: PropTypes.bool,
     onClose: PropTypes.func.isRequired, // 关闭的回调 (): void
@@ -19,14 +16,11 @@ class FsCropper extends Component {
 
   static defaultProps = {
     image: '',
-    width: 250,
-    height: 250,
-    borderRadius: 0,
     title: '图片裁剪',
     show: false
   }
 
-  cropper = null // 裁剪框的dom对象
+  cropper = null // 裁剪实例
 
   state = {
     loading: false // 是否显示spin
@@ -44,23 +38,19 @@ class FsCropper extends Component {
     })
   }
 
+  onCropperInit = cropper => {
+    this.cropper = cropper
+  }
+
   _onConfirm = async () => {
-    const canvas = this.cropper.getImage()
+    const canvas = this.cropper.getCroppedCanvas()
     this.showSpin()
     await this.props.onConfirm(canvas.toDataURL())
     this.hideSpin()
   }
 
   render() {
-    const {
-      image,
-      width,
-      height,
-      borderRadius,
-      show,
-      title,
-      onClose
-    } = this.props
+    const { image, show, title, onClose } = this.props
 
     return (
       <Modal
@@ -74,16 +64,7 @@ class FsCropper extends Component {
         <Spin show={this.state.loading}>
           <div className="fs-cropper">
             <div className="fs-cropper_crop">
-              <AvatarEditor
-                ref={dom => (this.cropper = dom)}
-                image={image}
-                width={width}
-                height={height}
-                borderRadius={borderRadius}
-                color={[0, 0, 0, 0.3]} // RGBA
-                rotate={0}
-                border={25}
-              />
+              <ImageCropper image={image} onInit={this.onCropperInit} />
             </div>
 
             <div className="fs-cropper_btns">
