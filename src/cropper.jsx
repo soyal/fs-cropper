@@ -29,7 +29,7 @@ class ImageCropper extends Component {
     }
 
     const cropper = new Cropper(this.imageDom, {
-      aspectRatio: 1 / 1,
+      // aspectRatio: 1 / 1,
       preview: this.preview,
       modal: true,
       autoCrop: true,
