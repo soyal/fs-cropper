@@ -71,7 +71,7 @@ class Demo extends Component {
 * title: String, 弹窗的标题
 * show: Boolean, 是否显示弹窗
 * onClose: Function, 关闭弹窗的回调
-* onConfirm: Function, (base64:string): Promise,确认裁剪的回调，为了方便异步操作，需要返回Promise，当Promise为resolve状态时，loading关闭
+* onConfirm: Function, (base64:string, canvas:Canvas): Promise,确认裁剪的回调，为了方便异步操作，需要返回Promise，当Promise为resolve状态时，loading关闭
 
 ## License
 [MIT](./LICENSE)

@@ -11,7 +11,7 @@ class FsCropper extends Component {
     title: PropTypes.string,
     show: PropTypes.bool,
     onClose: PropTypes.func.isRequired, // 关闭的回调 (): void
-    onConfirm: PropTypes.func.isRequired // 确认的回调 (base64: string): Promise, resolve后则停止loading
+    onConfirm: PropTypes.func.isRequired // 确认的回调 (base64: string, canvas: Canvas): Promise, resolve后则停止loading
   }
 
   static defaultProps = {
@@ -45,7 +45,7 @@ class FsCropper extends Component {
   _onConfirm = async () => {
     const canvas = this.cropper.getCroppedCanvas()
     this.showSpin()
-    await this.props.onConfirm(canvas.toDataURL())
+    await this.props.onConfirm(canvas.toDataURL(), canvas)
     this.hideSpin()
   }
 
