@@ -1,6 +1,6 @@
 {
   "name": "@fs/fs-cropper",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "fs image cropper.",
   "main": "dist/index.js",
   "scripts": {
@@ -18,16 +18,13 @@
   },
   "peerDependencies": {
     "@fs/cc-ui": "^2.2.0",
+    "prop-types": "^15.6.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "prop-types": "^15.6.0"
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "prop-types": "^15.6.0",
     "@fs/babel-plugin-import": "^1.0.0",
-    "@fs/cc-ui": "^2.2.0",
+    "@fs/cc-ui": "^2.2.1",
     "@storybook/addon-actions": "^3.2.6",
     "@storybook/addon-links": "^3.2.6",
     "@storybook/react": "^3.2.8",
@@ -51,6 +48,9 @@
     "less-loader": "^4.0.5",
     "postcss-flexbugs-fixes": "^3.2.0",
     "prettier": "^1.9.2",
+    "prop-types": "^15.6.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "storybook": "0.0.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5"

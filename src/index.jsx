@@ -45,7 +45,11 @@ class FsCropper extends Component {
   _onConfirm = async () => {
     const canvas = this.cropper.getCroppedCanvas()
     this.showSpin()
-    await this.props.onConfirm(canvas.toDataURL(), canvas)
+    try {
+      await this.props.onConfirm(canvas.toDataURL(), canvas)
+    } catch (e) {
+      console.error(e)
+    }
     this.hideSpin()
   }
 

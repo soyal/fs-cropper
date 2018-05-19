@@ -39,13 +39,14 @@ class Demo extends Component {
             })
           }}
           onConfirm={base64 => {
-            return new Promise(resolve => {
+            return new Promise((resolve, reject) => {
               setTimeout(() => {
-                this.setState({
-                  previewUrl: base64,
-                  show: false
-                })
-                resolve()
+                // throw new Error(123)
+                // this.setState({
+                //   previewUrl: base64,
+                //   show: false
+                // })
+                reject(new Error('some error'))
               }, 2000)
             })
           }}
